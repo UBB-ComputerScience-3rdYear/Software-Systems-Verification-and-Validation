@@ -1,5 +1,28 @@
-1. List STUDENT
-2. List TEME
-3. List NOTE
-4. Search TEME
-5. Search STUDENT
+STUDENTS features
+1. Add STUDENT - working
+2. Delete STUDENT - working
+3. Search STUDENT - working
+4. Update STUDENT 
+	- not working with all fields completed (info is modified correctly only locally, not in file): mixup with condition for when the student exists
+		in AbstractXMLRepository: update - return null daca obiectul a fost modificat sau obiectul, daca acesta nu exista
+		in UI: updateStudent - "Studentul nu exista!" if service returns null
+	- if not all fields are completed, crashes
+5. List STUDENTS - working
+
+
+ASSIGNMENTS features
+1. Add ASSIGNMENT - working
+2. Extend deadline - not working for initial deadline < (currentDate-startDate)/7; we read the startDate from file (2018-10-1) which causes problems
+3. Delete ASSIGNMENT - working
+4. Search ASSIGNMENT - working
+5. Update ASSIGNMENT - not working with all fields completed (info is modified correctly only locally, not in file): displays "Tema nu exista!" even if the input data is correct
+	- if not all fields are completed, crashes
+6. List ASSIGNMENTS - working
+
+
+GRADES features
+1. Add GRADE - not working for turn-in week > assignmentDeadline + 1; assignmentDeadline is computed relative to startDate, which is read from file 
+	- working otherwise
+2. Delete GRADE - working
+3. Search GRADE - working (for valid student and assignment id); not working for grades given as input in file with invalid student/grade ids
+4. List GRADES - working
