@@ -1,0 +1,5 @@
+1. List STUDENT
+2. List TEME
+3. List NOTE
+4. Search TEME
+5. Search STUDENT
