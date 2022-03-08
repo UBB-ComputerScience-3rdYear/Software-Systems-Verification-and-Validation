@@ -166,7 +166,7 @@ public class UI {
         String email = scanner.next();
         Student student = new Student(id, nume, grupa, email);
         Student student1 = service.updateStudent(student);
-        if (student1 == null) {
+        if (student1 != null) {
             System.out.print("Studentul nu exista!");
         } else {
             System.out.println("Student modificat cu succes!" + student1);
@@ -308,7 +308,7 @@ public class UI {
         int primire = scanner.nextInt();
         Tema tema = new Tema(id, descriere, deadline, primire);
         Tema tema1 = service.updateTema(tema);
-        if (tema1 == null) {
+        if (tema1 != null) {
             System.out.println("Tema nu exista!");
         } else {
             System.out.println("Tema modificata cu succes!" + tema1);
