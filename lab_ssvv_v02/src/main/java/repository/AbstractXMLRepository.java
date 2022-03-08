@@ -157,7 +157,7 @@ public abstract class AbstractXMLRepository<ID, E extends HasID<ID>> extends Abs
     @Override
     public E update(E entity) {
         E entity1 = super.update(entity);
-        if(entity == null){
+        if(entity1 == null){
             writeToFile();
         }
         return entity1;

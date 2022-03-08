@@ -169,7 +169,7 @@ public class UI {
         if (student1 != null) {
             System.out.print("Studentul nu exista!");
         } else {
-            System.out.println("Student modificat cu succes!" + student1);
+            System.out.println("Student modificat cu succes!" + student);
         }
     }
 
@@ -311,7 +311,7 @@ public class UI {
         if (tema1 != null) {
             System.out.println("Tema nu exista!");
         } else {
-            System.out.println("Tema modificata cu succes!" + tema1);
+            System.out.println("Tema modificata cu succes!" + tema);
         }
     }
 
