@@ -20,6 +20,7 @@ public class NotaXMLRepo extends AbstractXMLRepository<String, Nota> {
     @Override
     public Element createElementfromEntity(Document document, Nota entity) {
         Element e = document.createElement("nota");
+        e.setAttribute("id", entity.getID());
 
         Element idStudent = document.createElement("idStudent");
         idStudent.setTextContent(entity.getIdStudent());
