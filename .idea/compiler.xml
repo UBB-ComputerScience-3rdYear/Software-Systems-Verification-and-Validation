@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="lab_ssvv_v02" />
+        <module name="Software-Systems-Verification-and-Validation" />
       </profile>
     </annotationProcessing>
   </component>

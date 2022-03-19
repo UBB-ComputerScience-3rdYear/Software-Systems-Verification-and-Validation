@@ -1,20 +1,19 @@
 package service;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ServiceTest {
+public class ServiceTest {
 
     @Test
-    void addStudent_validInexistentID_Created() {
-        //returns null
-
+    public void addStudent_validInexistentID_Created() {
+        assertTrue(true);
     }
 
     @Test
-    void addStudent_validExistentID_NotCreated() {
+    public void addStudent_validExistentID_NotCreated() {
         //returns entity that we wanted to add
-
+        assertTrue(true);
     }
 }
