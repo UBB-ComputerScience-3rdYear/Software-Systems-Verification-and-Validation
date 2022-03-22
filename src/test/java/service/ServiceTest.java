@@ -194,4 +194,17 @@ public class ServiceTest {
 
         service.deleteStudent("valid_id");
     }
+
+
+    //addTema
+    @Test
+    public void addTema_invalidNullID_Exception() {
+
+    }
+
+
+    @Test
+    public void addTema_invalidEmptyID_Exception() {
+
+    }
 }
