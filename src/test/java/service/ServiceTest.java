@@ -140,12 +140,16 @@ public class ServiceTest {
         //group 0
         //group 1
         //verificare ca la testcase 3 & 4
-        Student student = service.addStudent(new Student( "valid_id", "vlad", 0, "some@sscs.cluj.ro"));
+        Student student0 = service.addStudent(new Student( "valid_id0", "vlad", 0, "some@sscs.cluj.ro"));
+        Student student1 = service.addStudent(new Student( "valid_id1", "vlad", 1, "some@sscs.cluj.ro"));
 
-        assertNull(student);
-        assertEquals(1, StreamSupport.stream(service.getAllStudenti().spliterator(), false).count());
+        assertNull(student0);
+        assertNull(student1);
+        assertEquals(2, StreamSupport.stream(service.getAllStudenti().spliterator(), false).count());
 
-        service.deleteStudent("valid_id");
+        service.deleteStudent("valid_id0");
+        service.deleteStudent("valid_id1");
+
     }
 
     //testcase9
@@ -196,7 +200,7 @@ public class ServiceTest {
     }
 
 
-    //addTema
+    //WHITE BOX - addTema
     @Test
     public void addTema_invalidNullID_Exception() {
 
