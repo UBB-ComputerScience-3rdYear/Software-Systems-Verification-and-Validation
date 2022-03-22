@@ -56,6 +56,8 @@ public class ServiceTest {
 
         assertNull(student);
         assertEquals(1, Stream.of(service.getAllStudenti().spliterator()).count());
+
+        service.deleteStudent("112");
     }
 
     //testcase 4
@@ -63,10 +65,13 @@ public class ServiceTest {
     @Order(2)
     public void addStudent_validExistentID_NotCreated() {
         //returns entity that we wanted to add
-        Student student = service.addStudent(new Student("112", "maria", 936, "someemail@scs.ubbcluj.ro"));
+        Student first = service.addStudent(new Student("112", "ioana", 936, "siie2810@scs.ubbcluj.ro"));
+        Student second = service.addStudent(new Student("112", "maria", 936, "someemail@scs.ubbcluj.ro"));
 
-        assertEquals("ioana", student.getNume());
+        assertEquals("ioana", second.getNume());
         assertEquals(1, Stream.of(service.getAllStudenti().spliterator()).count());
+
+        service.deleteStudent("112");
     }
 
     //testcase1
@@ -124,7 +129,9 @@ public class ServiceTest {
 
 
         assertNull(student);
-        assertEquals(2, StreamSupport.stream(service.getAllStudenti().spliterator(), false).count());
+        assertEquals(1, StreamSupport.stream(service.getAllStudenti().spliterator(), false).count());
+
+        service.deleteStudent("random_id");
     }
 
     //testcase8
@@ -133,7 +140,12 @@ public class ServiceTest {
         //group 0
         //group 1
         //verificare ca la testcase 3 & 4
+        Student student = service.addStudent(new Student( "valid_id", "vlad", 0, "some@sscs.cluj.ro"));
 
+        assertNull(student);
+        assertEquals(1, StreamSupport.stream(service.getAllStudenti().spliterator(), false).count());
+
+        service.deleteStudent("valid_id");
     }
 
     //testcase9
@@ -175,6 +187,11 @@ public class ServiceTest {
     public void addStudent_validEmail_Created() {
         //email "ana"
         //verificare ca la testcase 3 & 4
+        Student student = service.addStudent(new Student( "valid_id", "vlad", 0, "ana"));
 
+        assertNull(student);
+        assertEquals(1, StreamSupport.stream(service.getAllStudenti().spliterator(), false).count());
+
+        service.deleteStudent("valid_id");
     }
 }
