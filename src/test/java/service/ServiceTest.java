@@ -1,6 +1,7 @@
 package service;
 
 import domain.Student;
+import domain.Tema;
 import org.junit.jupiter.api.*;
 import repository.NotaXMLRepo;
 import repository.StudentXMLRepo;
@@ -203,12 +204,92 @@ public class ServiceTest {
     //WHITE BOX - addTema
     @Test
     public void addTema_invalidNullID_Exception() {
+        String INVALID_NULL_ID_MESSAGE = "Numar tema invalid!";
+        Tema testTema = new Tema(null, "ceva descriere", 13, 12);
 
+        ValidationException exception = assertThrows(ValidationException.class,
+                () -> service.addTema(testTema));
+
+        assertEquals(INVALID_NULL_ID_MESSAGE, exception.getMessage());
+    }
+
+    @Test
+    public void addTema_invalidEmptyID_Exception() {
+        String INVALID_NULL_ID_MESSAGE = "Numar tema invalid!";
+        Tema testTema = new Tema("", "", 13, 12);
+
+        ValidationException exception = assertThrows(ValidationException.class,
+                () -> service.addTema(testTema));
+
+        assertEquals(INVALID_NULL_ID_MESSAGE, exception.getMessage());
     }
 
 
     @Test
-    public void addTema_invalidEmptyID_Exception() {
+    public void addTema_invalidEmptyDescription_Exception() {
+        String INVALID_DESCRIPTION_MESSAGE = "Descriere invalida!";
+        Tema testTema = new Tema("vlad_sad", "", 13, 12);
 
+        ValidationException exception = assertThrows(ValidationException.class,
+                () -> service.addTema(testTema));
+
+        assertEquals(INVALID_DESCRIPTION_MESSAGE, exception.getMessage());
     }
+
+    @Test
+    public void addTema_outOfBoundsDeadline_Exception() {
+        String INVALID_DEADLINE_MESSAGE = "Deadlineul trebuie sa fie intre 1-14.";
+        Tema testTema = new Tema("vlad_sad", "ceva descriere", 0, 12);
+
+        ValidationException exception = assertThrows(ValidationException.class,
+                () -> service.addTema(testTema));
+
+        assertEquals(INVALID_DEADLINE_MESSAGE, exception.getMessage());
+    }
+
+    @Test
+    public void addTema_outOfBoundsPrimire_Exception() {
+        String INVALID_PRIMIRE_MESSAGE = "Saptamana primirii trebuie sa fie intre 1-14.";
+        Tema testTema = new Tema("vlad_sad", "ceva descriere", 10, 122);
+
+        ValidationException exception = assertThrows(ValidationException.class,
+                () -> service.addTema(testTema));
+
+        assertEquals(INVALID_PRIMIRE_MESSAGE, exception.getMessage());
+    }
+
+    @Test
+    public void addTema_deadlineSoonerThanPrimire_Exception() {
+        String INVALID_DEADLINE_TO_PRIMIRE_MESSAGE = "Saptamana deadline trebuie sa fie mai mare ca saptamana primirii";
+        Tema testTema = new Tema("vlad_sad", "ceva descriere", 10, 11);
+
+        ValidationException exception = assertThrows(ValidationException.class,
+                () -> service.addTema(testTema));
+
+        assertEquals(INVALID_DEADLINE_TO_PRIMIRE_MESSAGE, exception.getMessage());
+    }
+
+    @Test
+    public void addTema_validTema_added() {
+        Tema tema = service.addTema(new Tema( "valid_id", "vlad", 11, 5));
+
+        assertNull(tema);
+        assertEquals(1, StreamSupport.stream(service.getAllTeme().spliterator(), false).count());
+
+        service.deleteTema("valid_id");
+    }
+
+    @Test
+    public void addTema_duplicateTema_notAdded() {
+        Tema tema = service.addTema(new Tema( "valid_id", "vlad", 11, 5));
+        Tema tema2 = service.addTema(new Tema( "valid_id", "vlad_rares", 11, 5));
+
+        assertNull(tema);
+        assertNotNull(tema2);
+        assertEquals(1, StreamSupport.stream(service.getAllTeme().spliterator(), false).count());
+
+        service.deleteTema("valid_id");
+    }
+
+
 }

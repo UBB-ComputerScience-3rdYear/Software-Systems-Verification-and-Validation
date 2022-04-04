@@ -92,7 +92,7 @@ public abstract class AbstractXMLRepository<ID, E extends HasID<ID>> extends Abs
        writeToFile();
        }
 
-        return entity1;
+       return entity1;
    }
     /**
      * Rescrie fisierul cu toate obiectele din memorie
