@@ -38,6 +38,9 @@ public class ServiceTestIntegration {
                 temaXMLRepo, new TemaValidator(),
                 notaXMLRepo, new NotaValidator(studentXMLRepo, temaXMLRepo)
         );
+
+        Student student = service.addStudent(new Student("112", "ioana", 936, "siie2810@scs.ubbcluj.ro"));
+        Tema tema = service.addTema(new Tema( "valid_id", "vlad", 11, 5));
     }
 
     @AfterAll
@@ -73,9 +76,6 @@ public class ServiceTestIntegration {
 
     @Test
     public void addGrade_validGrade_gradedAdded() {
-        Student student = service.addStudent(new Student("112", "ioana", 936, "siie2810@scs.ubbcluj.ro"));
-        Tema tema = service.addTema(new Tema( "valid_id", "vlad", 11, 5));
-
         Double nota = service.addNota(
                 new Nota("prima nota", "112", "valid_id", 9, LocalDate.of(2021,11,21)),
                 "numa profesorii sunt de 10");
