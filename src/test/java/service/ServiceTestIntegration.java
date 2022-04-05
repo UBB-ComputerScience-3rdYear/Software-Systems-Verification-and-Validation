@@ -56,22 +56,20 @@ public class ServiceTestIntegration {
 
     @Test
     public void addStudent_validInexistingId_Created() {
-        Student student = service.addStudent(new Student("112", "ioana", 936, "siie2810@scs.ubbcluj.ro"));
+        Student student = service.addStudent(new Student("113", "ioana", 936, "siie2810@scs.ubbcluj.ro"));
 
         assertNull(student);
-        assertEquals(1, Stream.of(service.getAllStudenti().spliterator()).count());
 
-        service.deleteStudent("112");
+        service.deleteStudent("113");
     }
 
     @Test
     public void addTema_validTema_added() {
-        Tema tema = service.addTema(new Tema( "valid_id", "vlad", 11, 5));
+        Tema tema = service.addTema(new Tema( "valid_id1", "vlad", 11, 5));
 
         assertNull(tema);
-        assertEquals(1, StreamSupport.stream(service.getAllTeme().spliterator(), false).count());
 
-        service.deleteTema("valid_id");
+        service.deleteTema("valid_id1");
     }
 
     @Test
