@@ -202,6 +202,9 @@ public class ServiceTest {
 
 
     //WHITE BOX - addTema
+
+    //TESTE VALIDATOR
+    //testcase 1
     @Test
     public void addTema_invalidNullID_Exception() {
         String INVALID_NULL_ID_MESSAGE = "Numar tema invalid!";
@@ -213,6 +216,7 @@ public class ServiceTest {
         assertEquals(INVALID_NULL_ID_MESSAGE, exception.getMessage());
     }
 
+    //testcase 2
     @Test
     public void addTema_invalidEmptyID_Exception() {
         String INVALID_NULL_ID_MESSAGE = "Numar tema invalid!";
@@ -225,6 +229,7 @@ public class ServiceTest {
     }
 
 
+    //testcase 3
     @Test
     public void addTema_invalidEmptyDescription_Exception() {
         String INVALID_DESCRIPTION_MESSAGE = "Descriere invalida!";
@@ -236,6 +241,7 @@ public class ServiceTest {
         assertEquals(INVALID_DESCRIPTION_MESSAGE, exception.getMessage());
     }
 
+    //testcase 4
     @Test
     public void addTema_outOfBoundsDeadline_Exception() {
         String INVALID_DEADLINE_MESSAGE = "Deadlineul trebuie sa fie intre 1-14.";
@@ -247,6 +253,7 @@ public class ServiceTest {
         assertEquals(INVALID_DEADLINE_MESSAGE, exception.getMessage());
     }
 
+    //testcase 5
     @Test
     public void addTema_outOfBoundsPrimire_Exception() {
         String INVALID_PRIMIRE_MESSAGE = "Saptamana primirii trebuie sa fie intre 1-14.";
@@ -258,6 +265,7 @@ public class ServiceTest {
         assertEquals(INVALID_PRIMIRE_MESSAGE, exception.getMessage());
     }
 
+    //testcase 6
     @Test
     public void addTema_deadlineSoonerThanPrimire_Exception() {
         String INVALID_DEADLINE_TO_PRIMIRE_MESSAGE = "Saptamana deadline trebuie sa fie mai mare ca saptamana primirii";
@@ -269,6 +277,10 @@ public class ServiceTest {
         assertEquals(INVALID_DEADLINE_TO_PRIMIRE_MESSAGE, exception.getMessage());
     }
 
+    //testcase 6
+
+    //TESTE SERVICE
+    //testcase 1
     @Test
     public void addTema_validTema_added() {
         Tema tema = service.addTema(new Tema( "valid_id", "vlad", 11, 5));
@@ -279,6 +291,7 @@ public class ServiceTest {
         service.deleteTema("valid_id");
     }
 
+    //testcase 2
     @Test
     public void addTema_duplicateTema_notAdded() {
         Tema tema = service.addTema(new Tema( "valid_id", "vlad", 11, 5));
@@ -290,6 +303,5 @@ public class ServiceTest {
 
         service.deleteTema("valid_id");
     }
-
 
 }
