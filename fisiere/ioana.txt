@@ -22,3 +22,15 @@ Nota: 9.0
 Predata in saptamana: 8
 Deadline: 11
 Feedback: numa profesorii sunt de 10
+
+Tema: valid_id
+Nota: 9.0
+Predata in saptamana: 8
+Deadline: 11
+Feedback: numa profesorii sunt de 10
+
+Tema: valid_id
+Nota: 9.0
+Predata in saptamana: 8
+Deadline: 11
+Feedback: numa profesorii sunt de 10
