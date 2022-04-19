@@ -207,8 +207,8 @@ public class Service {
         }
 
         if(savedGrade != null)
-            return savedGrade.getNota();
-        return null;
+            throw new ValidationException("Nota exista deja!");
+        return nota.getNota();
     }
 
     /**
